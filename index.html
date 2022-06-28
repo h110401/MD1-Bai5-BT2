@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<table style="text-align: center" width="500px">
+<table border="1" style="text-align: center" width="500px">
     <tr>
         <td>Amount</td>
         <td>From Currency</td>
@@ -14,7 +14,7 @@
         <td></td>
     </tr>
     <tr>
-        <td><input type="text" id="input"></td>
+        <td><input type="text" id="input" onchange="convert()"></td>
         <td>
             <select id="from">
                 <option value="1">VietNam</option>
@@ -38,14 +38,13 @@
 <script>
     function convert() {
         let input = +document.getElementById('input').value;
-        let from = document.getElementById('from').value;
+        let from = +document.getElementById('from').value;
         let to = +document.getElementById('to').value;
         if (from == to){
             document.getElementById('result').innerText = "Result: " + input + (from ? ' VND' : ' USD');
         } else {
-            from ?  (document.getElementById('result').innerText = "Result: " + input / 23000 + ' USD') : (document.getElementById('result').innerText = "Result: " + input * 23000 + ' VND')
+            from ? (document.getElementById('result').innerText = "Result: " + input / 23000 + ' USD') : (document.getElementById('result').innerText = "Result: " + input * 23000 + ' VND')
         }
-
     }
 </script>
 
