@@ -6,29 +6,31 @@
 </head>
 <body>
 
-<table border="1" style="text-align: center" width="500px">
+<table style="width: 200px; height: 100px; text-align: center">
     <tr>
-        <td>Amount</td>
-        <td>From Currency</td>
-        <td>To Currency</td>
+        <td>Số tiền</td>
+        <td>From</td>
+        <td>To</td>
         <td></td>
     </tr>
     <tr>
-        <td><input type="text" id="input" onchange="convert()"></td>
+        <td>
+            <input type="text" id="input">
+        </td>
         <td>
             <select id="from">
-                <option value="1">VietNam</option>
-                <option value="0">USD</option>
+                <option value="VND">VND</option>
+                <option value="USD">USD</option>
             </select>
         </td>
         <td>
             <select id="to">
-                <option value="1">VietNam</option>
-                <option value="0">USD</option>
+                <option value="VND">VND</option>
+                <option value="USD">USD</option>
             </select>
         </td>
         <td>
-            <button onclick="convert()">Convert</button>
+            <button onclick="doiTien()">Đổi</button>
         </td>
     </tr>
 </table>
@@ -36,14 +38,14 @@
 <p id="result">Result: </p>
 
 <script>
-    function convert() {
+    function doiTien() {
+        let fromVar = document.getElementById('from').value;
+        let toVar = document.getElementById('to').value;
         let input = +document.getElementById('input').value;
-        let from = +document.getElementById('from').value;
-        let to = +document.getElementById('to').value;
-        if (from == to){
-            document.getElementById('result').innerText = "Result: " + input + (from ? ' VND' : ' USD');
+        if(fromVar == toVar){
+            document.getElementById('result').innerText = 'Result: ' + input + ' ' + toVar;
         } else {
-            from ? (document.getElementById('result').innerText = "Result: " + input / 23000 + ' USD') : (document.getElementById('result').innerText = "Result: " + input * 23000 + ' VND')
+            document.getElementById('result').innerText = 'Result: ' + ( fromVar == 'VND' ? input / 23000 : input * 23000 ) + ' ' + toVar
         }
     }
 </script>
